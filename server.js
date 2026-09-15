@@ -40,6 +40,22 @@ app.patch('/tasks/:id/done', (req, res) => {
   res.json(task);
 });
 
+
+
+// DELETE /tasks/:id — remove a task
+app.delete('/tasks/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const index = tasks.findIndex(t => t.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: `no task with id ${id}` });
+  }
+
+  tasks.splice(index, 1);
+  res.status(204).send();
+});
+
+
 // Basic root route, mostly so a healthcheck / curl to "/" doesn't 404
 app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'todo-api' });
