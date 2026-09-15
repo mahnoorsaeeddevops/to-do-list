@@ -67,10 +67,9 @@ curl -X PATCH http://localhost:3000/tasks/1/done
 
 ## Reflection
 
-*(Replace this with your own words before submitting — see notes below.)*
 
-**Trickiest part:** ...
+Trickiest part: Getting used to the Docker development loop —editing code doesn't update a running container, since images are snapshots. I had to rebuild and restart the container after every change before retesting.
 
-**Why I made these choices:** ...
+Why I made these choices: In-memory storage since no database was required, and Express because it keeps routing simple and readable. I copy package.json before the source code in the Dockerfile so the npm install layer stays cached across rebuilds.
 
-**What I'd improve with another day:** ...
+What I'd improve with another day: Add automated tests and run them in the CI workflow before the Docker build, add a /health endpoint with a Docker HEALTHCHECK, and swap the in-memory array for SQLite so data survives a restart
