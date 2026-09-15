@@ -68,7 +68,7 @@ curl -X PATCH http://localhost:3000/tasks/1/done
 ## Reflection
 
 
-Trickiest part: Getting used to the Docker development loop —editing code doesn't update a running container, since images are snapshots. I had to rebuild and restart the container after every change before retesting.
+Trickiest part: Getting used to the Docker development loop editing code doesn't update a running container, since images are snapshots. I had to rebuild and restart the container after every change before retesting.
 
 Why I made these choices: In-memory storage since no database was required, and Express because it keeps routing simple and readable. I copy package.json before the source code in the Dockerfile so the npm install layer stays cached across rebuilds.
 
